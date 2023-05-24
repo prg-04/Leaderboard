@@ -6,4 +6,4 @@ const displayScores = () => {
   return ui;
 };
 
-document.addEventListener('DOMContentLoaded', displayScores);
+displayScores();

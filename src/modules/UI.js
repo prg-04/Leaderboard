@@ -42,7 +42,7 @@ class UI {
         score,
       };
       this.items.push(item);
-      new Store().setItems(this.items);
+      new Store('scores').setItems(this.items);
       this.renderScores();
       form.reset();
     });

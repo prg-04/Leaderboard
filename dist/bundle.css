@@ -1,3 +1,6 @@
+/*!******************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles.css ***!
+  \******************************************************************/
 * {
   margin: 0;
   padding: 0;
@@ -140,3 +143,6 @@
     margin-right: 2rem;
   }
 }
+
+
+/*# sourceMappingURL=bundle.css.map*/
