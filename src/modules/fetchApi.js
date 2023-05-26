@@ -3,31 +3,30 @@ let gameId;
 export const createGame = async () => {
   try {
     const response = await fetch(
-      "https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/",
+      'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/',
       {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify({
-          name: "My-game",
+          name: 'My-game',
         }),
         headers: {
-          "Content-type": "application/json; charset=UTF-8",
+          'Content-type': 'application/json; charset=UTF-8',
         },
-      }
+      },
     );
 
     if (response.ok) {
       const json = await response.json();
 
-      const result = json.result;
-      const id = result.split(":")[1].split(" ")[1];
+      const { result } = json;
+      const id = result.split(':')[1].split(' ')[1];
 
       gameId = id;
       return id;
-    } else {
-      throw new Error(`Failed to create game. Status: ${response.status}`);
     }
+    throw new Error(`Failed to create game. Status: ${response.status}`);
   } catch (error) {
-    console.error(error);
+    return null;
   }
 };
 
@@ -39,11 +38,11 @@ export const getAllScores = async () => {
   const scores = await fetch(
     `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`,
     {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "Content-type": "application/json; charset=UTF-8",
+        'Content-type': 'application/json; charset=UTF-8',
       },
-    }
+    },
   );
 
   if (scores.ok) {
@@ -51,4 +50,5 @@ export const getAllScores = async () => {
 
     return json.result;
   }
+  return null;
 };

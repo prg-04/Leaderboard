@@ -18,73 +18,71 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  var ui = new _modules_UI_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
-  document.querySelector(".refresh__btn").addEventListener("click", function () {
+var ui = new _modules_UI_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
+document.addEventListener('DOMContentLoaded', function () {
+  var refreshBtn = document.querySelector('.refresh__btn');
+  refreshBtn.addEventListener('click', function () {
     ui.renderScores();
   });
-  var gameId;
-  var fetchScores = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-      var scores;
-      return _regeneratorRuntime().wrap(function _callee$(_context) {
-        while (1) switch (_context.prev = _context.next) {
-          case 0:
-            if (gameId) {
-              _context.next = 4;
-              break;
-            }
-            _context.next = 3;
-            return (0,_modules_fetchApi_js__WEBPACK_IMPORTED_MODULE_2__.createGame)();
-          case 3:
-            gameId = _context.sent;
-          case 4:
-            _context.next = 6;
-            return (0,_modules_fetchApi_js__WEBPACK_IMPORTED_MODULE_2__.getAllScores)();
-          case 6:
-            scores = _context.sent;
-            return _context.abrupt("return", scores);
-          case 8:
-          case "end":
-            return _context.stop();
-        }
-      }, _callee);
-    }));
-    return function fetchScores() {
-      return _ref.apply(this, arguments);
-    };
-  }();
-  var displayScores = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-      var scores;
-      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-        while (1) switch (_context2.prev = _context2.next) {
-          case 0:
-            _context2.prev = 0;
-            _context2.next = 3;
-            return fetchScores();
-          case 3:
-            scores = _context2.sent;
-            console.log(scores);
-            ui.renderScores();
-            _context2.next = 11;
-            break;
-          case 8:
-            _context2.prev = 8;
-            _context2.t0 = _context2["catch"](0);
-            console.error(_context2.t0);
-          case 11:
-          case "end":
-            return _context2.stop();
-        }
-      }, _callee2, null, [[0, 8]]);
-    }));
-    return function displayScores() {
-      return _ref2.apply(this, arguments);
-    };
-  }();
-  displayScores();
 });
+var gameId;
+var fetchScores = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+    var scores;
+    return _regeneratorRuntime().wrap(function _callee$(_context) {
+      while (1) switch (_context.prev = _context.next) {
+        case 0:
+          if (gameId) {
+            _context.next = 4;
+            break;
+          }
+          _context.next = 3;
+          return (0,_modules_fetchApi_js__WEBPACK_IMPORTED_MODULE_2__.createGame)();
+        case 3:
+          gameId = _context.sent;
+        case 4:
+          _context.next = 6;
+          return (0,_modules_fetchApi_js__WEBPACK_IMPORTED_MODULE_2__.getAllScores)();
+        case 6:
+          scores = _context.sent;
+          return _context.abrupt("return", scores);
+        case 8:
+        case "end":
+          return _context.stop();
+      }
+    }, _callee);
+  }));
+  return function fetchScores() {
+    return _ref.apply(this, arguments);
+  };
+}();
+var displayScores = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+      while (1) switch (_context2.prev = _context2.next) {
+        case 0:
+          _context2.prev = 0;
+          _context2.next = 3;
+          return fetchScores();
+        case 3:
+          ui.renderScores();
+          _context2.next = 9;
+          break;
+        case 6:
+          _context2.prev = 6;
+          _context2.t0 = _context2["catch"](0);
+          console.error(_context2.t0);
+        case 9:
+        case "end":
+          return _context2.stop();
+      }
+    }, _callee2, null, [[0, 6]]);
+  }));
+  return function displayScores() {
+    return _ref2.apply(this, arguments);
+  };
+}();
+displayScores();
 
 /***/ }),
 
@@ -113,13 +111,14 @@ var UI = /*#__PURE__*/function () {
   function UI() {
     _classCallCheck(this, UI);
     this.addScores();
-    this.gameId = "";
+    this.gameId = '';
+    this.scoresCont = document.getElementById('scores');
   }
   _createClass(UI, [{
     key: "renderScores",
     value: function renderScores() {
-      var scoresCont = document.getElementById("scores");
-      scoresCont.innerHTML = "";
+      var _this = this;
+      this.scoresCont.innerHTML = '';
       (0,_fetchApi_js__WEBPACK_IMPORTED_MODULE_0__.getAllScores)().then(function (items) {
         console.log(items);
         items = items.filter(function (item) {
@@ -127,19 +126,19 @@ var UI = /*#__PURE__*/function () {
         });
         items = items.slice(0, 100);
         items.forEach(function (item, index) {
-          var template = document.getElementById("template");
+          var template = document.getElementById('template');
           var clone = template.content.cloneNode(true);
-          var li = clone.querySelector(".score__item");
-          var name = clone.querySelector(".score__name");
-          var score = clone.querySelector(".score__score");
+          var li = clone.querySelector('.score__item');
+          var name = clone.querySelector('.score__name');
+          var score = clone.querySelector('.score__score');
           name.textContent = "".concat(item.user, ": ");
           score.textContent = item.score;
           if (index % 2 === 0) {
-            li.classList.add("gray__bg");
+            li.classList.add('gray__bg');
           } else {
-            li.classList.add("white__bg");
+            li.classList.add('white__bg');
           }
-          scoresCont.appendChild(clone);
+          _this.scoresCont.appendChild(clone);
         });
       })["catch"](function (error) {
         console.error(error);
@@ -148,44 +147,33 @@ var UI = /*#__PURE__*/function () {
   }, {
     key: "addScores",
     value: function addScores() {
-      var _this = this;
-      var form = document.querySelector(".add__score__form");
+      var _this2 = this;
+      var form = document.querySelector('.add__score__form');
       (0,_fetchApi_js__WEBPACK_IMPORTED_MODULE_0__.createGame)().then(function (gameId) {
-        _this.gameId = gameId;
-        form.addEventListener("submit", /*#__PURE__*/function () {
+        _this2.gameId = gameId;
+        form.addEventListener('submit', /*#__PURE__*/function () {
           var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(e) {
-            var name, score, response, json;
+            var name, score;
             return _regeneratorRuntime().wrap(function _callee$(_context) {
               while (1) switch (_context.prev = _context.next) {
                 case 0:
                   e.preventDefault();
-                  name = document.getElementById("name").value;
-                  score = document.getElementById("score").value;
+                  name = document.getElementById('name').value;
+                  score = document.getElementById('score').value;
                   _context.next = 5;
-                  return fetch("https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/".concat(_this.gameId, "/scores"), {
-                    method: "POST",
+                  return fetch("https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/".concat(_this2.gameId, "/scores"), {
+                    method: 'POST',
                     body: JSON.stringify({
                       user: name,
                       score: score
                     }),
                     headers: {
-                      "Content-type": "application/json; charset=UTF-8"
+                      'Content-type': 'application/json; charset=UTF-8'
                     }
                   });
                 case 5:
-                  response = _context.sent;
-                  if (!response.ok) {
-                    _context.next = 11;
-                    break;
-                  }
-                  _context.next = 9;
-                  return response.json();
-                case 9:
-                  json = _context.sent;
-                  console.log(json);
-                case 11:
                   form.reset();
-                case 12:
+                case 6:
                 case "end":
                   return _context.stop();
               }
@@ -230,19 +218,19 @@ var createGame = /*#__PURE__*/function () {
         case 0:
           _context.prev = 0;
           _context.next = 3;
-          return fetch("https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/", {
-            method: "POST",
+          return fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/', {
+            method: 'POST',
             body: JSON.stringify({
-              name: "My-game"
+              name: 'My-game'
             }),
             headers: {
-              "Content-type": "application/json; charset=UTF-8"
+              'Content-type': 'application/json; charset=UTF-8'
             }
           });
         case 3:
           response = _context.sent;
           if (!response.ok) {
-            _context.next = 14;
+            _context.next = 12;
             break;
           }
           _context.next = 7;
@@ -250,23 +238,20 @@ var createGame = /*#__PURE__*/function () {
         case 7:
           json = _context.sent;
           result = json.result;
-          id = result.split(":")[1].split(" ")[1];
+          id = result.split(':')[1].split(' ')[1];
           gameId = id;
           return _context.abrupt("return", id);
-        case 14:
+        case 12:
           throw new Error("Failed to create game. Status: ".concat(response.status));
         case 15:
-          _context.next = 20;
-          break;
-        case 17:
-          _context.prev = 17;
+          _context.prev = 15;
           _context.t0 = _context["catch"](0);
-          console.error(_context.t0);
-        case 20:
+          return _context.abrupt("return", null);
+        case 18:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[0, 17]]);
+    }, _callee, null, [[0, 15]]);
   }));
   return function createGame() {
     return _ref.apply(this, arguments);
@@ -289,9 +274,9 @@ var getAllScores = /*#__PURE__*/function () {
         case 4:
           _context2.next = 6;
           return fetch("https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/".concat(gameId, "/scores/"), {
-            method: "GET",
+            method: 'GET',
             headers: {
-              "Content-type": "application/json; charset=UTF-8"
+              'Content-type': 'application/json; charset=UTF-8'
             }
           });
         case 6:
@@ -306,6 +291,8 @@ var getAllScores = /*#__PURE__*/function () {
           json = _context2.sent;
           return _context2.abrupt("return", json.result);
         case 12:
+          return _context2.abrupt("return", null);
+        case 13:
         case "end":
           return _context2.stop();
       }
@@ -336,4 +323,4 @@ __webpack_require__.r(__webpack_exports__);
 /******/ var __webpack_exports__ = (__webpack_exec__("./src/index.js"));
 /******/ }
 ]);
-//# sourceMappingURL=bundlec92bed1fb095873a5ab2.js.map
+//# sourceMappingURL=bundlec542b7a7aa59e24d9dbb.js.map
