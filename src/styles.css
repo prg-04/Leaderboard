@@ -107,6 +107,18 @@
   background-color: #fff;
 }
 
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  z-index: 9999;
+}
+
 @media screen and (min-width: 600px) {
   #main {
     display: flex;

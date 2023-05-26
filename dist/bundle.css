@@ -94,7 +94,6 @@
   box-shadow: 5px 5px 5px 0 #494747;
   padding: 0.5rem 0.6rem;
   transition: all 100ms ease-in-out;
-
 }
 
 .add__score__btn:hover {
@@ -109,6 +108,18 @@
 
 .white__bg {
   background-color: #fff;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  z-index: 9999;
 }
 
 @media screen and (min-width: 600px) {
