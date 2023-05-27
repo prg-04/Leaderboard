@@ -18,9 +18,9 @@
 - [❓ FAQ (OPTIONAL)](#faq)
 - [📝 License](#license)
 
-# 📖 [TO-DO List] <a name="about-project"></a>
+# 📖 [Leaderboard] <a name="about-project"></a>
 
-> **[Leaderboard]**  Leaderboard is a simple website that is created using ES6 syntax and modules to displays a list of names and corresponding scores ahead on you and allows you to add and remove tasks from that list.
+> **[Leaderboard]**  Leaderboard is a simple website that is created using ES6 syntax and modules to displays a list of names and corresponding scores ahead on you and allows you to your score to database and retrieve them with a click of a button.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -36,7 +36,7 @@
 </details>
 
 ### Key Features <a name="key-features"></a>
-- **[You can easily add or remove your tasks]**
+- **[You can easily add and retrieve user scores]**
 - **[Clean and interactive UI]**
 - **[Responsive with the view of desktop and mobile]**
 
