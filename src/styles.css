@@ -1,0 +1,157 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 1rem;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background-color: #ff3cac;
+  background-image:
+    linear-gradient(
+      225deg,
+      #ff3cac 0%,
+      #784ba0 50%,
+      #2b86c5 100%
+    );
+}
+
+#leaderboard {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.leaderboard__scores {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.score__refresh {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score__refresh > button {
+  box-shadow: 5px 5px 5px 0 #2f2e2e;
+  padding: 0.5rem 0.6rem;
+  transition: all 100ms ease-in-out;
+}
+
+.score__refresh > button:hover {
+  box-shadow: 5px 5px 5px 0 #000;
+  padding: 0.5rem 0.6rem;
+  scale: 0.9;
+}
+
+#scores {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #333;
+  margin-top: 1.5rem;
+}
+
+.score__item {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.add__score {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-right: 2rem;
+}
+
+.add__score__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+  margin-top: 1.9rem;
+}
+
+.add__score__form > input {
+  padding: 0.5rem 0.6rem;
+  border: 1px solid #ccc;
+}
+
+.add__score__form > input:focus {
+  outline: none;
+}
+
+.add__score__btn {
+  align-self: end;
+  box-shadow: 5px 5px 5px 0 #2f2e2e;
+  padding: 0.5rem 0.6rem;
+  transition: all 100ms ease-in-out;
+}
+
+.add__score__btn:hover {
+  box-shadow: 5px 5px 5px 0 #000;
+  padding: 0.5rem 0.6rem;
+  scale: 0.9;
+}
+
+.gray__bg {
+  background-color: #ccc;
+}
+
+.white__bg {
+  background-color: #fff;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  z-index: 9999;
+}
+
+@media screen and (min-width: 600px) {
+  #main {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 2rem;
+  }
+
+  #leaderboard {
+    margin: 3rem 2rem;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+
+  .leaderboard__scores {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+
+  .add__score {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-right: 2rem;
+  }
+}
